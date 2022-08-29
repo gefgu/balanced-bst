@@ -19,7 +19,6 @@ function Tree(array) {
   const root = buildTree(array);
 
   function insert(key, root = undefined) {
-
     if (root === undefined) root = this.root;
     if (root === null) return Node(key);
     if (root.data === key) {
@@ -32,6 +31,8 @@ function Tree(array) {
 
     return root;
   }
+
+  function deletion(key, )
 
   return { root, insert };
 }
