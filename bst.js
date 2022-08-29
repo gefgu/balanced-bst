@@ -12,13 +12,28 @@ function Tree(array) {
     if (arr.length === 0) return null;
     const midIndex = Math.floor(arr.length / 2);
     const left = arr.slice(0, midIndex);
-    const rigth = arr.slice(midIndex + 1);
-    const root = Node(arr[midIndex], buildTree(left), buildTree(rigth));
+    const right = arr.slice(midIndex + 1);
+    const root = Node(arr[midIndex], buildTree(left), buildTree(right));
     return root;
   }
-  
   const root = buildTree(array);
-  return root;
+
+  function insert(key, root = undefined) {
+
+    if (root === undefined) root = this.root;
+    if (root === null) return Node(key);
+    if (root.data === key) {
+      return root;
+    } else if (root.data < key) {
+      root.right = insert(key, root.right);
+    } else if (root.data > key) {
+      root.left = insert(key, root.left);
+    }
+
+    return root;
+  }
+
+  return { root, insert };
 }
 
 export default Tree;

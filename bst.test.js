@@ -2,7 +2,7 @@ const { default: Tree } = require("./bst");
 
 test("Build Tree", () => {
   const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-  expect(Tree(array)).toEqual({
+  expect(Tree(array).root).toEqual({
     data: 8,
     left: {
       data: 4,
@@ -31,4 +31,11 @@ test("Build Tree", () => {
       },
     },
   });
+});
+
+test("Insert", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  tree.insert(27);
+  expect(tree.root.right.left.right.data).toEqual(27);
 });
