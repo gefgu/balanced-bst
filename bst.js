@@ -38,14 +38,17 @@ function Tree(array) {
     if (root.data === key) {
       if (root.left === null && root.right === null) {
         return null;
+      } else if (root.left !== null && root.right === null) {
+        return root.left;
+      } else if (root.left === null && root.right !== null) {
+        return root.right;
       }
     } else if (root.data < key) {
       root.right = deletion(key, root.right);
-      
     } else if (root.data > key) {
       root.left = deletion(key, root.left);
     }
-    return root
+    return root;
   }
 
   return { root, insert, deletion };

@@ -40,7 +40,7 @@ test("Insert", () => {
   expect(tree.root.right.left.right.data).toEqual(27);
 });
 
-test.only("Delete no children", () => {
+test("Delete no children", () => {
   const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
   const tree = Tree(array);
   tree.deletion(324);
@@ -75,7 +75,7 @@ test.only("Delete no children", () => {
   });
 });
 
-test("Delete one children", () => {
+test.only("Delete one children", () => {
   const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
   const tree = Tree(array);
   tree.deletion(6345);
