@@ -16,7 +16,7 @@ function Tree(array) {
     const root = Node(arr[midIndex], buildTree(left), buildTree(rigth));
     return root;
   }
-
+  
   const root = buildTree(array);
   return root;
 }
