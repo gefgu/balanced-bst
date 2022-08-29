@@ -32,9 +32,23 @@ function Tree(array) {
     return root;
   }
 
-  function deletion(key, )
+  function deletion(key, root = undefined) {
+    if (root === undefined) root = this.root;
+    if (root === null) return null;
+    if (root.data === key) {
+      if (root.left === null && root.right === null) {
+        return null;
+      }
+    } else if (root.data < key) {
+      root.right = deletion(key, root.right);
+      
+    } else if (root.data > key) {
+      root.left = deletion(key, root.left);
+    }
+    return root
+  }
 
-  return { root, insert };
+  return { root, insert, deletion };
 }
 
 export default Tree;
