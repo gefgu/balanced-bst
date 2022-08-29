@@ -42,6 +42,16 @@ function Tree(array) {
         return root.left;
       } else if (root.left === null && root.right !== null) {
         return root.right;
+      } else if (root.left !== null && root.right !== null) {
+        let sucessor = root.right;
+        while(sucessor?.left?.left) {
+          sucessor = sucessor.left;
+        }
+        root.data = sucessor.left.data;
+        sucessor.left = null;
+
+        
+        return root;
       }
     } else if (root.data < key) {
       root.right = deletion(key, root.right);
