@@ -5,3 +5,8 @@ function Node(value, left, right) {
     right,
   };
 }
+
+function Tree(array) {
+  const root = buildTree(array);
+  return { root };
+}
