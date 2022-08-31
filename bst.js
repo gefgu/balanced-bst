@@ -85,7 +85,19 @@ function Tree(array) {
     return results.map(callback);
   }
 
-  return { root, insert, deletion, find, levelOrder };
+  function preOrder(callback = (value) => value) {
+    let root = this.root;
+    let results = [];
+    function transverse(root, results) {
+      if (root?.data) results.push(root.data);
+      if (root?.left) transverse(root.left, results);
+      if (root?.right) transverse(root.right, results);
+    }
+    transverse(root, results);
+    return results.map(callback);
+  }
+
+  return { root, insert, deletion, find, levelOrder, preOrder };
 }
 
 export default Tree;

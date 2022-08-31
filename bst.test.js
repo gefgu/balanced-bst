@@ -172,3 +172,17 @@ test("Level Order with callback", () => {
     9, 5, 68, 4, 8, 24, 6346, 2, 6, 10, 325,
   ]);
 });
+
+test("Pre-Order without callback", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  expect(tree.preOrder()).toEqual([8, 4, 3, 1, 7, 5, 67, 23, 9, 6345, 324]);
+});
+
+test("Pre-Order with callback", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  expect(tree.preOrder((value) => value + 1)).toEqual([
+    9, 5, 4, 2, 8, 6, 68, 24, 10, 6346, 325,
+  ]);
+});
