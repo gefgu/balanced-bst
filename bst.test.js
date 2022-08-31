@@ -192,3 +192,9 @@ test("In-Order", () => {
   const tree = Tree(array);
   expect(tree.inorder()).toEqual([1, 3, 4, 5, 7, 8, 9, 23, 67, 324, 6345]);
 });
+
+test("Post-Order", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  expect(tree.postorder()).toEqual([1, 3, 5, 7, 4, 9, 23, 324, 6345, 67, 8]);
+});
