@@ -44,13 +44,12 @@ function Tree(array) {
         return root.right;
       } else if (root.left !== null && root.right !== null) {
         let sucessor = root.right;
-        while(sucessor?.left?.left) {
+        while (sucessor?.left?.left) {
           sucessor = sucessor.left;
         }
         root.data = sucessor.left.data;
         sucessor.left = null;
 
-        
         return root;
       }
     } else if (root.data < key) {
@@ -61,7 +60,19 @@ function Tree(array) {
     return root;
   }
 
-  return { root, insert, deletion };
+  function find(key, root = undefined) {
+    if (root === undefined) root = this.root;
+    if (root === null) return -1;
+    if (root.data === key) {
+      return root;
+    } else if (root.data > key) {
+      return find(key, root.left);
+    } else if (root.data < key) {
+      return find(key, root.right);
+    }
+  }
+
+  return { root, insert, deletion, find };
 }
 
 export default Tree;

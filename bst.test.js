@@ -110,7 +110,7 @@ test("Delete one children", () => {
   });
 });
 
-test.only("Delete two children", () => {
+test("Delete two children", () => {
   const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
   const tree = Tree(array);
   tree.deletion(4);
@@ -145,4 +145,16 @@ test.only("Delete two children", () => {
   });
 });
 
+test("Find function with placed element", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
 
+  expect(tree.find(1)).toEqual({ data: 1, left: null, right: null });
+});
+
+test("Find function with not placed element", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+
+  expect(tree.find(9999)).toEqual(-1);
+});
