@@ -72,7 +72,20 @@ function Tree(array) {
     }
   }
 
-  return { root, insert, deletion, find };
+  function levelOrder(callback = (value) => value) {
+    let root = this.root;
+    let queue = [root];
+    let results = [];
+    while (queue.length > 0) {
+      const first = queue.shift();
+      if (first?.left) queue.push(first.left);
+      if (first?.right) queue.push(first.right);
+      results.push(first.data);
+    }
+    return results.map(callback);
+  }
+
+  return { root, insert, deletion, find, levelOrder };
 }
 
 export default Tree;

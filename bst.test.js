@@ -158,3 +158,17 @@ test("Find function with not placed element", () => {
 
   expect(tree.find(9999)).toEqual(-1);
 });
+
+test("Level Order without callback", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  expect(tree.levelOrder()).toEqual([8, 4, 67, 3, 7, 23, 6345, 1, 5, 9, 324]);
+});
+
+test("Level Order with callback", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  expect(tree.levelOrder((value) => value + 1)).toEqual([
+    9, 5, 68, 4, 8, 24, 6346, 2, 6, 10, 325,
+  ]);
+});
