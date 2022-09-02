@@ -40,6 +40,18 @@ test("Insert", () => {
   expect(tree.root.right.left.right.data).toEqual(27);
 });
 
+test("Insert", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  tree.insert(1000);
+  tree.insert(1001);
+  tree.insert(1002);
+  tree.insert(1003);
+  tree.insert(1004);
+  tree.insert(1005);
+  expect(tree.root.right.right.left.right.right.right.right.right.right.data).toEqual(1005);
+});
+
 test("Delete no children", () => {
   const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
   const tree = Tree(array);
