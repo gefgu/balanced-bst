@@ -121,6 +121,22 @@ function Tree(array) {
     return results.map(callback);
   }
 
+  function height(node) {
+    if (node === null) return 0;
+
+    let leftHeight = 0;
+    let rightHeight = 0;
+
+    if(node?.left) leftHeight += 1 + height(node?.left);
+    if(node?.right) rightHeight += 1 + height(node?.right);
+
+    if (leftHeight >= rightHeight) {
+      return leftHeight;
+    } else {
+      return rightHeight;
+    }
+  }
+
   return {
     root,
     insert,
@@ -130,6 +146,7 @@ function Tree(array) {
     preorder,
     inorder,
     postorder,
+    height,
   };
 }
 

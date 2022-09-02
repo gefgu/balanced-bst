@@ -198,3 +198,16 @@ test("Post-Order", () => {
   const tree = Tree(array);
   expect(tree.postorder()).toEqual([1, 3, 5, 7, 4, 9, 23, 324, 6345, 67, 8]);
 });
+
+test("Height 2 left", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  const height = tree.height(tree.root.left);
+  expect(height).toEqual(2);
+});
+
+test("Height 2 right", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  expect(tree.height(tree.root.right)).toEqual(2);
+});
