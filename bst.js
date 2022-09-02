@@ -1,4 +1,4 @@
-function Node(data, left=null, right=null) {
+function Node(data, left = null, right = null) {
   return {
     data,
     left,
@@ -175,6 +175,11 @@ function Tree(array) {
     return isBalanced;
   }
 
+  function rebalance() {
+    const array = levelOrder();
+    this.root = buildTree(array);
+  }
+
   return {
     root,
     insert,
@@ -187,6 +192,7 @@ function Tree(array) {
     height,
     depth,
     isBalanced,
+    rebalance,
   };
 }
 
