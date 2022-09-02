@@ -1,4 +1,4 @@
-function Node(data, left, right) {
+function Node(data, left=null, right=null) {
   return {
     data,
     left,
@@ -7,6 +7,8 @@ function Node(data, left, right) {
 }
 
 function Tree(array) {
+  let root;
+
   function buildTree(arr) {
     arr = [...new Set(arr)].sort((a, b) => a - b); // Sort and remove duplicates
     if (arr.length === 0) return null;
@@ -16,7 +18,7 @@ function Tree(array) {
     const root = Node(arr[midIndex], buildTree(left), buildTree(right));
     return root;
   }
-  const root = buildTree(array);
+  root = buildTree(array);
 
   function insert(key, root = undefined) {
     if (root === undefined) root = this.root;
@@ -158,6 +160,21 @@ function Tree(array) {
     return counter;
   }
 
+  function isBalanced() {
+    let root = this.root;
+    let queue = [root];
+    let isBalanced = true;
+    while (queue.length > 0) {
+      const first = queue.shift();
+      if (first?.left) queue.push(first.left);
+      if (first?.right) queue.push(first.right);
+
+      isBalanced =
+        isBalanced && Math.abs(height(first.left) - height(first.right)) <= 1;
+    }
+    return isBalanced;
+  }
+
   return {
     root,
     insert,
@@ -169,6 +186,7 @@ function Tree(array) {
     postorder,
     height,
     depth,
+    isBalanced,
   };
 }
 

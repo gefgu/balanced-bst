@@ -224,3 +224,22 @@ test("Depth 2", () => {
   const tree = Tree(array);
   expect(tree.depth(tree.root.right.left)).toEqual(2);
 });
+
+
+test("Is Balanced true", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  expect(tree.isBalanced()).toEqual(true);
+});
+
+test("Is Balanced false", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  tree.insert(1000);
+  tree.insert(1001);
+  tree.insert(1002);
+  tree.insert(1003);
+  tree.insert(1004);
+  tree.insert(1005);
+  expect(tree.isBalanced()).toEqual(false);
+});
