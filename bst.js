@@ -176,8 +176,9 @@ function Tree(array) {
   }
 
   function rebalance() {
-    const array = levelOrder();
-    this.root = buildTree(array);
+    const array = this.levelOrder();
+    const newRoot = buildTree(array);
+    this.root = newRoot;
   }
 
   return {
