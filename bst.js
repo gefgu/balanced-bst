@@ -127,14 +127,35 @@ function Tree(array) {
     let leftHeight = 0;
     let rightHeight = 0;
 
-    if(node?.left) leftHeight += 1 + height(node?.left);
-    if(node?.right) rightHeight += 1 + height(node?.right);
+    if (node?.left) leftHeight += 1 + height(node?.left);
+    if (node?.right) rightHeight += 1 + height(node?.right);
 
     if (leftHeight >= rightHeight) {
       return leftHeight;
     } else {
       return rightHeight;
     }
+  }
+
+  function depth(node) {
+    let counter = 0;
+
+    function transverse(treeNode) {
+      if (treeNode === node) {
+        return;
+      }
+
+      counter++;
+
+      if (treeNode.data > node.data) {
+        return transverse(treeNode.left);
+      } else if (treeNode.data < node.data) {
+        return transverse(treeNode.right);
+      }
+    }
+
+    transverse(this.root);
+    return counter;
   }
 
   return {
@@ -147,6 +168,7 @@ function Tree(array) {
     inorder,
     postorder,
     height,
+    depth,
   };
 }
 

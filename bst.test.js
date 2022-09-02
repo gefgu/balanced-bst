@@ -211,3 +211,16 @@ test("Height 2 right", () => {
   const tree = Tree(array);
   expect(tree.height(tree.root.right)).toEqual(2);
 });
+
+
+test("Depth 3", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  expect(tree.depth(tree.root.left.left.left)).toEqual(3);
+});
+
+test("Depth 2", () => {
+  const array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+  const tree = Tree(array);
+  expect(tree.depth(tree.root.right.left)).toEqual(2);
+});
